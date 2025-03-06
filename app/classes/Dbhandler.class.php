@@ -18,7 +18,7 @@ class Dbhandler {
     $this->pass = "mypassword";
     $this->db = "ogtech";
 
-
+    // connect to db
     $this->conn = new mysqli($this->host, $this->user, $this->pass, $this->db);
     return $this->conn;
 

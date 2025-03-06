@@ -3,7 +3,7 @@
 class CommonUtil extends Dbhandler{
 
   public function productExists($image){
-    $sql = "SELECT * FROM Items where Image = ?;";
+    $sql = "SELECT * FROM items where Image = ?;";
     $stmt = $this->conn()->stmt_init();
     if (!$stmt->prepare($sql))
     {
@@ -67,7 +67,7 @@ class CommonUtil extends Dbhandler{
   // create product
   public function setProduct($name, $brand, $description, $category, $sellingprice, $quantityinstock, $image)
   {
-    $sql = "INSERT INTO items(Name, Brand, Description, Category, SellingPrice, QuantityInStock, Image)
+    $sql = "INSERT INTO Items(Name, Brand, Description, Category, SellingPrice, QuantityInStock, Image)
       VALUES ('$name', '$brand', '$description', $category, $sellingprice, $quantityinstock, '$image');";
     $this->conn()->query($sql) or die("<p>*Product creation error, please try again!</p>");
   }

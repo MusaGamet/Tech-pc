@@ -5,7 +5,7 @@
 class Admin extends Dbhandler{
 
   protected function adminReviews(){
-    $sql = "SELECT OI.ItemID, OI.RatingDateTime, I.Image FROM OrderItems OI, items I
+    $sql = "SELECT OI.ItemID, OI.RatingDateTime, I.Image FROM orderitems OI, items I
       WHERE OI.ItemID = I.ItemID AND Rating IS NOT NULL ORDER BY OrderItemID DESC;";
 
     $conn = new Dbhandler();
@@ -282,7 +282,7 @@ class Admin extends Dbhandler{
       // if searchMember is not set or searchMember is empty
       // only non admin users payment is shown
 
-      $sql = "SELECT M.*, O.*, P.* FROM members M, Orders O, Payment P
+      $sql = "SELECT M.*, O.*, P.* FROM members M, orders O, payment P
         WHERE M.PrivilegeLevel = 0 AND P.OrderID = O.OrderID  AND M.MemberID = O.MemberID ORDER BY P.PaymentDate DESC";
       $result = $dbh->conn()->query($sql) or die($dbh->conn()->error);
       while ($row = $result->fetch_assoc()) 

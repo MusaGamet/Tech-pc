@@ -6,8 +6,8 @@ class Item extends Dbhandler{
   private $name;
   private $brand;
   private $description;
-  private $category;
   private $sellingPrice;
+  private $category;
   private $quantityInStock;
   private $image;
   
@@ -40,7 +40,6 @@ class Item extends Dbhandler{
     $this->brand = $row["Brand"];
     $this->description = $row["Description"];
     $this->category = $row["Category"];
-    $this->sellingPrice = $row["SellingPrice"];
     $this->sellingPrice = $row["SellingPrice"];
     $this->quantityInStock = $row["QuantityInStock"];
     $this->image = $row["Image"];
@@ -99,7 +98,6 @@ class Item extends Dbhandler{
       Name = '$this->name',
       Brand = '$this->brand',
       Description = '$this->description',
-      SellingPrice = $this->sellingPrice,
       Category = $this->category,
       SellingPrice = $this->sellingPrice,
       QuantityInStock = $this->quantityInStock
@@ -108,9 +106,7 @@ class Item extends Dbhandler{
     $this->conn()->query($sql) or die($this->conn()->error);
   }
 
-  public function setSellingPrice($sellingPrice) { 
-  $this->sellingPrice = $sellingPrice; 
-  }
+  public function setSellingPrice($sellingPrice) { $this->sellingPrice = $sellingPrice; }
   public function setQuantityInStock($quantityInStock) { $this->quantityInStock = $quantityInStock; }
 
   public function getItemID() { return $this->itemID; }
