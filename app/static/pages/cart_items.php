@@ -15,7 +15,7 @@
 
   if (isset($_GET["remove_item"])){
     $orderItemID = $_GET["remove_item"];
-    $sql = "DELETE FROM OrderItems WHERE OrderItemID = $orderItemID";
+    $sql = "DELETE FROM orderitems WHERE OrderItemID = $orderItemID";
     $conn = new Dbhandler();
     $conn->conn()->query($sql) or die($conn->conn()->error);
     header("location: cart.php?member_id=$memberID");

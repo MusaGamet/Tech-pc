@@ -7,7 +7,7 @@ $dbh = new Dbhandler;
 // This page handles admin forms only
 
 function uidExists($username, $email, $util) {
-  $sql = "SELECT * FROM Members WHERE Username = ? 
+  $sql = "SELECT * FROM members WHERE Username = ? 
     OR Email = ?;";
   $stmt = $util->conn()->stmt_init();
 
@@ -106,7 +106,7 @@ if (isset($_GET['item_id']))
 {
   $itemID = $_GET['item_id'];
   $sql = "SELECT ItemID, Name, Brand, Description, Category, SellingPrice, QuantityInStock, Image
-    FROM Items WHERE ItemID = $itemID";
+    FROM items WHERE ItemID = $itemID";
 
   $result = $dbh->conn()->query($sql) or die ($dbh->conn()->error);
 

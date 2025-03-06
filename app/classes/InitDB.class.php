@@ -23,7 +23,7 @@ class InitDB extends Dbhandler{
       $tables, "CREATE TABLE IF NOT EXISTS orders(
         OrderID INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
         MemberID INT NOT NULL,
-        FOREIGN KEY (MemberID) REFERENCES Members(MemberID),
+        FOREIGN KEY (MemberID) REFERENCES members(MemberID),
         CartFlag BIT NOT NULL DEFAULT 1
       )"
     );
@@ -33,7 +33,7 @@ class InitDB extends Dbhandler{
       $tables, "CREATE TABLE IF NOT EXISTS payment(
         PaymentID INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
         OrderID INT NOT NULL,
-        FOREIGN KEY (OrderID) REFERENCES Orders(OrderID),
+        FOREIGN KEY (OrderID) REFERENCES orders(OrderID),
         PaymentDate DATE NOT NULL
       )"
     );
@@ -58,8 +58,8 @@ class InitDB extends Dbhandler{
         OrderItemID INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
         OrderID INT NOT NULL,
         ItemID INT NOT NULL,
-        FOREIGN KEY (OrderID) REFERENCES Orders(OrderID),
-        FOREIGN KEY (ItemID) REFERENCES Items(ItemID),
+        FOREIGN KEY (OrderID) REFERENCES orders(OrderID),
+        FOREIGN KEY (ItemID) REFERENCES items(ItemID),
         Price FLOAT NOT NULL,
         Quantity INT NOT NULL,
         AddedDatetime DATETIME NOT NULL,

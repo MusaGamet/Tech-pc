@@ -2,7 +2,7 @@
 $orderItemID = $_GET["review_item"];
 
 function checkRating($orderItemID, $conn){
-  $sql = "SELECT Rating FROM OrderItems WHERE OrderItemID = $orderItemID";
+  $sql = "SELECT Rating FROM orderitems WHERE OrderItemID = $orderItemID";
   $result = $conn->conn()->query($sql) or die($conn->conn()->error);
   $row = $result->fetch_assoc();
   $rating = $row["Rating"];
@@ -13,7 +13,7 @@ function checkRating($orderItemID, $conn){
 
 function checkReviewExists($conn, $orderItemID)
 {
-  $sql = "SELECT Feedback FROM OrderItems WHERE OrderItemID = $orderItemID";
+  $sql = "SELECT Feedback FROM orderitems WHERE OrderItemID = $orderItemID";
   $result = $conn->conn()->query($sql) or die($conn->conn()->error);
   $row = $result->fetch_assoc();
   $feedback = $row["Feedback"];
@@ -41,7 +41,7 @@ if (isset($_POST["submit"]))
   } 
   else
   {
-    $sql = "UPDATE OrderItems SET Feedback = \"$review\", Rating = $rating, RatingDateTime = CURRENT_TIME
+    $sql = "UPDATE orderitems SET Feedback = \"$review\", Rating = $rating, RatingDateTime = CURRENT_TIME
       WHERE OrderItemID = $orderItemID";
     $conn->conn()->query($sql) or die($conn->conn()->error);
     echo("<script>location.href = 'review.php?error=none&review_item=$orderItemID&redirect=1';</script>");

@@ -123,7 +123,7 @@ class Admin extends Dbhandler{
       else
       {
         // limited search to prevent page overflow
-        $sql = "SELECT ItemID, Name, Brand, QuantityInStock FROM Items
+        $sql = "SELECT ItemID, Name, Brand, QuantityInStock FROM items
           WHERE Brand LIKE '%$searchProduct%' OR Name LIKE '%$searchProduct%' LIMIT 20";
 
         $result = $this->conn()->query($sql) or die ("Product does not exists!");
@@ -244,7 +244,7 @@ class Admin extends Dbhandler{
         echo "<p class='prompt-warning'>Please enter a value!<p>";
       else
       {
-        $sql = "SELECT M.*, O.*, P.* FROM members M, Orders O, Payment P
+        $sql = "SELECT M.*, O.*, P.* FROM members M, orders O, payment P
           WHERE (M.Username LIKE '%$searchMember%' OR M.Email LIKE '%$searchMember%') 
           AND M.PrivilegeLevel = 0 AND P.OrderID = O.OrderID  AND M.MemberID = O.MemberID ORDER BY P.PaymentDate DESC";
 

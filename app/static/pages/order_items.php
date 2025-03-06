@@ -36,7 +36,7 @@
     {
       $idx = $i+1;
 
-      $sql = "SELECT P.OrderID, P.PaymentDate, OI.OrderID FROM Payment P, OrderItems OI
+      $sql = "SELECT P.OrderID, P.PaymentDate, OI.OrderID FROM payment P, orderitems OI
       WHERE P.OrderID = OI.OrderID";
       $dbh = new Dbhandler();
       $result = $dbh->conn()->query($sql);

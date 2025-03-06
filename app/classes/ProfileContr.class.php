@@ -18,7 +18,7 @@ class ProfileContr extends CommonUtil{
 
   private function setUserAccount($username, $pwd, $email, $memberID) {
     $hashedPwd = password_hash($pwd, PASSWORD_DEFAULT);
-    $sql = "UPDATE Members SET Username = ?, Password=?, Email = ? where MemberID = ?;";
+    $sql = "UPDATE members SET Username = ?, Password=?, Email = ? where MemberID = ?;";
     $stmt = $this->conn()->stmt_init();
     if (!$stmt->prepare($sql)) {
       header("location: ../manage_profile.php?error=Statementfailed");

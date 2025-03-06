@@ -59,7 +59,7 @@ class CommonUtil extends Dbhandler{
     $memberID = $row["MemberID"];
 
     // create cart
-    $sql = "INSERT INTO Orders(MemberID) VALUES ($memberID);";
+    $sql = "INSERT INTO orders(MemberID) VALUES ($memberID);";
     $result = $this->conn()->query($sql) or die("<p>*Cart creation error, please try again!</p>");
     $this->conn()->close();
   }
@@ -67,7 +67,7 @@ class CommonUtil extends Dbhandler{
   // create product
   public function setProduct($name, $brand, $description, $category, $sellingprice, $quantityinstock, $image)
   {
-    $sql = "INSERT INTO Items(Name, Brand, Description, Category, SellingPrice, QuantityInStock, Image)
+    $sql = "INSERT INTO items(Name, Brand, Description, Category, SellingPrice, QuantityInStock, Image)
       VALUES ('$name', '$brand', '$description', $category, $sellingprice, $quantityinstock, '$image');";
     $this->conn()->query($sql) or die("<p>*Product creation error, please try again!</p>");
   }
