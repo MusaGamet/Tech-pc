@@ -32,7 +32,7 @@ class Item extends Dbhandler{
   }
 
   protected function initData(){
-    $sql = "SELECT * FROM items WHERE ItemID = $this->itemID";
+    $sql = "SELECT * FROM Items WHERE ItemID = $this->itemID";
     $result = $this->conn()->query($sql) or die($this->conn()->error);
 
     $row = $result->fetch_assoc();
@@ -41,7 +41,6 @@ class Item extends Dbhandler{
     $this->description = $row["Description"];
     $this->category = $row["Category"];
     $this->sellingPrice = $row["SellingPrice"];
-    $this->sellingPrice = $row["SellingPrice"];
     $this->quantityInStock = $row["QuantityInStock"];
     $this->image = $row["Image"];
   }
@@ -49,7 +48,7 @@ class Item extends Dbhandler{
   // copy reviews and ratings from database
   protected function updateReviews(){
     $this->reviews = array();
-    $sql = "SELECT OI.Feedback, OI.Rating, O.MemberID FROM orderitems OI, orders O
+    $sql = "SELECT OI.Feedback, OI.Rating, O.MemberID FROM OrderItems OI, Orders O
       WHERE OI.ITEMID = '$this->itemID' AND OI.OrderID = O.OrderID";
     $result = $this->conn()->query($sql) or die($this->conn()->error);
 
@@ -59,7 +58,7 @@ class Item extends Dbhandler{
       $feedback = $row["Feedback"];
       $rating = $row["Rating"];
       $memberID = $row["MemberID"];
-      $nameResult = $this->conn()->query("SELECT Username FROM members M WHERE MemberID = $memberID") or die($this->conn()->error);
+      $nameResult = $this->conn()->query("SELECT Username FROM Members M WHERE MemberID = $memberID") or die($this->conn()->error);
       $username = $nameResult->fetch_array()[0];
       // check to see if a review has been made or not
       if ($rating != NULL)
@@ -82,7 +81,7 @@ class Item extends Dbhandler{
 
   public function checkSoldCount()
   {
-    $sql = "SELECT SUM(OI.Quantity), O.CartFlag FROM orderitems OI, orders O
+    $sql = "SELECT SUM(OI.Quantity), O.CartFlag FROM OrderItems OI, Orders O
       WHERE ItemID = $this->itemID AND OI.OrderID = O.OrderID AND CartFlag = 0";
 
     $result = $this->conn()->query($sql) or die($this->conn()->error);
@@ -95,11 +94,10 @@ class Item extends Dbhandler{
   // copy object data to database
   public function setData()
   {
-    $sql = "UPDATE items SET
+    $sql = "UPDATE Items SET
       Name = '$this->name',
       Brand = '$this->brand',
       Description = '$this->description',
-      SellingPrice = $this->sellingPrice,
       Category = $this->category,
       SellingPrice = $this->sellingPrice,
       QuantityInStock = $this->quantityInStock
@@ -108,9 +106,7 @@ class Item extends Dbhandler{
     $this->conn()->query($sql) or die($this->conn()->error);
   }
 
-  public function setSellingPrice($sellingPrice) { 
-  $this->sellingPrice = $sellingPrice; 
-  }
+  public function setSellingPrice($sellingPrice) { $this->sellingPrice = $sellingPrice; }
   public function setQuantityInStock($quantityInStock) { $this->quantityInStock = $quantityInStock; }
 
   public function getItemID() { return $this->itemID; }

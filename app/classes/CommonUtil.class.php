@@ -23,7 +23,7 @@ class CommonUtil extends Dbhandler{
   }
 
   public function uidExists($loginName) {
-    $sql = "SELECT * FROM members WHERE Username = ? 
+    $sql = "SELECT * FROM Members WHERE Username = ? 
       OR Email = ?";
     $stmt = $this->conn()->stmt_init();
 
@@ -47,12 +47,12 @@ class CommonUtil extends Dbhandler{
   // create member
   public function setUser($username, $pwd, $email, $privilegeLevel=0, $attempt=3) {
     $hashedPwd = password_hash($pwd, PASSWORD_DEFAULT);
-    $sql = "INSERT INTO members(Username, Password, Email, PrivilegeLevel, Attempt, RegisteredDate)
+    $sql = "INSERT INTO Members(Username, Password, Email, PrivilegeLevel, Attempt, RegisteredDate)
       VALUES ('$username', '$hashedPwd', '$email', $privilegeLevel, $attempt, CURRENT_TIME);";
     $this->conn()->query($sql) or die("<p>*User creation error, please try again!</p>");
 
     // get member id
-    $sql = "SELECT MemberID FROM members where Username = '$username';";
+    $sql = "SELECT MemberID FROM Members where Username = '$username';";
     $result = $this->conn()->query($sql) or die("<p>*MemberID error, please try again!</p>");
 
     $row = $result->fetch_assoc();
@@ -67,7 +67,7 @@ class CommonUtil extends Dbhandler{
   // create product
   public function setProduct($name, $brand, $description, $category, $sellingprice, $quantityinstock, $image)
   {
-    $sql = "INSERT INTO items(Name, Brand, Description, Category, SellingPrice, QuantityInStock, Image)
+    $sql = "INSERT INTO Items(Name, Brand, Description, Category, SellingPrice, QuantityInStock, Image)
       VALUES ('$name', '$brand', '$description', $category, $sellingprice, $quantityinstock, '$image');";
     $this->conn()->query($sql) or die("<p>*Product creation error, please try again!</p>");
   }

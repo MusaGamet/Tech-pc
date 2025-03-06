@@ -27,10 +27,10 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `items`
+-- Table structure for table `Items`
 --
 
-CREATE TABLE `items` (
+CREATE TABLE `Items` (
   `ItemID` int(11) NOT NULL,
   `Name` varchar(64) NOT NULL,
   `Brand` varchar(64) NOT NULL,
@@ -42,10 +42,10 @@ CREATE TABLE `items` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `items`
+-- Dumping data for table `Items`
 --
 
-INSERT INTO `items` (`ItemID`, `Name`, `Brand`, `Description`, `Category`, `SellingPrice`, `QuantityInStock`, `Image`) VALUES
+INSERT INTO `Items` (`ItemID`, `Name`, `Brand`, `Description`, `Category`, `SellingPrice`, `QuantityInStock`, `Image`) VALUES
 (3, 'RTX 3070 PC - Best price to performance PC (16GB Ram 1TB SSD)', 'Mixed', 'CPU: INTEL CORE i5-10400F,\r\nCooler: CRYORIG H7 QUAD LUMI,\r\nMOBO: ASUS TUF Gaming B460-PRO WIFI, \r\nRAM: G.SKILL TRIDENT Z ROYAL 2X8GB CL18 DDR4 3600MHZ,\r\nGPU: EVGA GeForce RTX 3070 XC3 ULTRAGAMING 2x8GB GDDR6,\r\nPSU: GIGABYTE P650B 80+ BRONZE NON-MODULAR,\r\nCase: ANTEC NX410 BLACK, \r\nSSD: CORSAIR Force Series MP510 1TB M.2 NVMe, \r\nHDD: Western Digital WD BLUE 1TB SATA,\r\nFREE Lamptron Flexlight Multi Programmable ARGB LED Strip                                               ', 0, 6950, 29, '3070 pc.jpg'),
 (4, 'OGTECH EPIC All-Rounder RTX 3060TI PC (16GB Ram 1TB SSD)', 'Mixed', 'CPU: INTEL i5-10400F MOBO: GIGABYE B450M DS3H V2, \r\nRAM: G.SKILL AEGIS Series 8GB DDR4 3200MHz x2,\r\nGPU: GIGABYTE GeForce RTX 3060TI EAGLE OC 8G DDR6,\r\nPSU: ANTEC NE550C V2 80+ BRONZE,\r\nCASE: ANTEC NX410 BLACK\r\nSSD: GIGABYTE 1TB SATA,\r\nWIFI: ASUS PCE-AX3000 WIFI6 PCIE,\r\nFREE Lamptron Flexlight Multi Programmable ARGB LED Strip                                                ', 0, 5991, 15, '3060 ti pc.jpg'),
 (5, 'Nvidia Geforce RTX 3080 PC King Value (16 GB Ram)', 'Mixed', 'CPU: AMD RYZEN 7 3700X, \r\nCooler: CRYORIG H7 MOBO: GIGABYTE B450 AORUS PRO WIFI,\r\nRAM: G.SKILL TRIDENT Z NEO 2X8GB CL16 DDR4 3200MHZ, \r\nGPU: GIGABYTE GeForce RTX 3080 GAMING OC 10GB GDDR6X,\r\nPSU: ANTEC HCG Gold Series 850W 80+ GOLD FULLY MODULAR,\r\nCase: ANTEC DF700 FLUX, \r\nSSD: CORSAIR Force Series MP510 480GB M.2 NVMe,\r\nFREE Cablemod Premium Sleeved Cables,\r\nFREE Lamptron Flexlight Multi Programmable ARGB LED Strip                                ', 0, 8668, 20, '3080 pc.jpg'),
@@ -86,10 +86,10 @@ INSERT INTO `items` (`ItemID`, `Name`, `Brand`, `Description`, `Category`, `Sell
 -- --------------------------------------------------------
 
 --
--- Table structure for table `members`
+-- Table structure for table `Members`
 --
 
-CREATE TABLE `members` (
+CREATE TABLE `Members` (
   `MemberID` int(11) NOT NULL,
   `Username` varchar(64) NOT NULL,
   `Password` varchar(512) NOT NULL,
@@ -100,10 +100,10 @@ CREATE TABLE `members` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `members`
+-- Dumping data for table `Members`
 --
 
-INSERT INTO `members` (`MemberID`, `Username`, `Password`, `Email`, `PrivilegeLevel`, `Attempt`, `RegisteredDate`) VALUES
+INSERT INTO `Members` (`MemberID`, `Username`, `Password`, `Email`, `PrivilegeLevel`, `Attempt`, `RegisteredDate`) VALUES
 (2, 'admin', '$2y$10$wq746a0dn0wmcPzHXfEMhe80xZQc9/1PBJID9Ri4AHbfmwT9xn9Xi', 'admin@gmail.com', 1, 3, '2022-03-27'),
 (5, 'test1', '$2y$10$GlhvBkMPi19b3tGoGUzEzOu3GDazDogOzd.eoAvNc0ID8PB9n7E7K', 'test@gmail.com', 0, 3, '2022-03-27'),
 (6, 'test2', '$2y$10$Q.624Ef8zdpsWryToDFJZONz7XopgMQZwQeLXwzFUBa07/DNdFfUO', 'test123@gmail.com', 0, 3, '2022-03-27'),
@@ -119,10 +119,10 @@ INSERT INTO `members` (`MemberID`, `Username`, `Password`, `Email`, `PrivilegeLe
 -- --------------------------------------------------------
 
 --
--- Table structure for table `orderitems`
+-- Table structure for table `OrderItems`
 --
 
-CREATE TABLE `orderitems` (
+CREATE TABLE `OrderItems` (
   `OrderItemID` int(11) NOT NULL,
   `OrderID` int(11) NOT NULL,
   `ItemID` int(11) NOT NULL,
@@ -135,10 +135,10 @@ CREATE TABLE `orderitems` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `orderitems`
+-- Dumping data for table `OrderItems`
 --
 
-INSERT INTO `orderitems` (`OrderItemID`, `OrderID`, `ItemID`, `Price`, `Quantity`, `AddedDatetime`, `Feedback`, `Rating`, `RatingDateTime`) VALUES
+INSERT INTO `OrderItems` (`OrderItemID`, `OrderID`, `ItemID`, `Price`, `Quantity`, `AddedDatetime`, `Feedback`, `Rating`, `RatingDateTime`) VALUES
 (37, 24, 3, 6950, 1, '2022-03-13 00:43:58', 'Best PC that i ever purchased. Thanks OGTECH for your service.', 5, '2022-03-13 19:36:36'),
 (56, 28, 3, 6950, 1, '2022-03-13 23:49:08', 'The PC is good as its name, best price to performance PC. The GPU is TOP 10 currently for best price to performance. Anyways, good service must buy from this shop.', 5, '2022-03-14 00:35:25'),
 (57, 28, 5, 8668, 1, '2022-03-13 23:49:39', 'EZ KATKA. GOOD SERVICE. BEST VALUE. KING OF PC. THANKS OGTECH', 5, '2022-03-14 00:35:51'),
@@ -150,20 +150,20 @@ INSERT INTO `orderitems` (`OrderItemID`, `OrderID`, `ItemID`, `Price`, `Quantity
 -- --------------------------------------------------------
 
 --
--- Table structure for table `orders`
+-- Table structure for table `Orders`
 --
 
-CREATE TABLE `orders` (
+CREATE TABLE `Orders` (
   `OrderID` int(11) NOT NULL,
   `MemberID` int(11) NOT NULL,
   `CartFlag` bit(1) NOT NULL DEFAULT b'1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `orders`
+-- Dumping data for table `Orders`
 --
 
-INSERT INTO `orders` (`OrderID`, `MemberID`, `CartFlag`) VALUES
+INSERT INTO `Orders` (`OrderID`, `MemberID`, `CartFlag`) VALUES
 (6, 6, b'1'),
 (7, 7, b'1'),
 (8, 8, b'1'),
@@ -182,20 +182,20 @@ INSERT INTO `orders` (`OrderID`, `MemberID`, `CartFlag`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `payment`
+-- Table structure for table `Payment`
 --
 
-CREATE TABLE `payment` (
+CREATE TABLE `Payment` (
   `PaymentID` int(11) NOT NULL,
   `OrderID` int(11) NOT NULL,
   `PaymentDate` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `payment`
+-- Dumping data for table `Payment`
 --
 
-INSERT INTO `payment` (`PaymentID`, `OrderID`, `PaymentDate`) VALUES
+INSERT INTO `Payment` (`PaymentID`, `OrderID`, `PaymentDate`) VALUES
 (6, 24, '2022-03-13'),
 (7, 28, '2022-03-14'),
 (8, 29, '2022-03-14');
@@ -205,36 +205,36 @@ INSERT INTO `payment` (`PaymentID`, `OrderID`, `PaymentDate`) VALUES
 --
 
 --
--- Indexes for table `items`
+-- Indexes for table `Items`
 --
-ALTER TABLE `items`
+ALTER TABLE `Items`
   ADD PRIMARY KEY (`ItemID`);
 
 --
--- Indexes for table `members`
+-- Indexes for table `Members`
 --
-ALTER TABLE `members`
+ALTER TABLE `Members`
   ADD PRIMARY KEY (`MemberID`);
 
 --
--- Indexes for table `orderitems`
+-- Indexes for table `OrderItems`
 --
-ALTER TABLE `orderitems`
+ALTER TABLE `OrderItems`
   ADD PRIMARY KEY (`OrderItemID`),
   ADD KEY `OrderID` (`OrderID`),
   ADD KEY `ItemID` (`ItemID`);
 
 --
--- Indexes for table `orders`
+-- Indexes for table `Orders`
 --
-ALTER TABLE `orders`
+ALTER TABLE `Orders`
   ADD PRIMARY KEY (`OrderID`),
   ADD KEY `MemberID` (`MemberID`);
 
 --
--- Indexes for table `payment`
+-- Indexes for table `Payment`
 --
-ALTER TABLE `payment`
+ALTER TABLE `Payment`
   ADD PRIMARY KEY (`PaymentID`),
   ADD KEY `OrderID` (`OrderID`);
 
@@ -243,33 +243,33 @@ ALTER TABLE `payment`
 --
 
 --
--- AUTO_INCREMENT for table `items`
+-- AUTO_INCREMENT for table `Items`
 --
-ALTER TABLE `items`
+ALTER TABLE `Items`
   MODIFY `ItemID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
 
 --
--- AUTO_INCREMENT for table `members`
+-- AUTO_INCREMENT for table `Members`
 --
-ALTER TABLE `members`
+ALTER TABLE `Members`
   MODIFY `MemberID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
--- AUTO_INCREMENT for table `orderitems`
+-- AUTO_INCREMENT for table `OrderItems`
 --
-ALTER TABLE `orderitems`
+ALTER TABLE `OrderItems`
   MODIFY `OrderItemID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
 
 --
--- AUTO_INCREMENT for table `orders`
+-- AUTO_INCREMENT for table `Orders`
 --
-ALTER TABLE `orders`
+ALTER TABLE `Orders`
   MODIFY `OrderID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
--- AUTO_INCREMENT for table `payment`
+-- AUTO_INCREMENT for table `Payment`
 --
-ALTER TABLE `payment`
+ALTER TABLE `Payment`
   MODIFY `PaymentID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
@@ -277,23 +277,23 @@ ALTER TABLE `payment`
 --
 
 --
--- Constraints for table `orderitems`
+-- Constraints for table `OrderItems`
 --
-ALTER TABLE `orderitems`
-  ADD CONSTRAINT `orderitems_ibfk_1` FOREIGN KEY (`OrderID`) REFERENCES `orders` (`OrderID`),
-  ADD CONSTRAINT `orderitems_ibfk_2` FOREIGN KEY (`ItemID`) REFERENCES `items` (`ItemID`);
+ALTER TABLE `OrderItems`
+  ADD CONSTRAINT `orderitems_ibfk_1` FOREIGN KEY (`OrderID`) REFERENCES `Orders` (`OrderID`),
+  ADD CONSTRAINT `orderitems_ibfk_2` FOREIGN KEY (`ItemID`) REFERENCES `Items` (`ItemID`);
 
 --
--- Constraints for table `orders`
+-- Constraints for table `Orders`
 --
-ALTER TABLE `orders`
-  ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`MemberID`) REFERENCES `members` (`MemberID`);
+ALTER TABLE `Orders`
+  ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`MemberID`) REFERENCES `Members` (`MemberID`);
 
 --
--- Constraints for table `payment`
+-- Constraints for table `Payment`
 --
-ALTER TABLE `payment`
-  ADD CONSTRAINT `payment_ibfk_1` FOREIGN KEY (`OrderID`) REFERENCES `orders` (`OrderID`);
+ALTER TABLE `Payment`
+  ADD CONSTRAINT `payment_ibfk_1` FOREIGN KEY (`OrderID`) REFERENCES `Orders` (`OrderID`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

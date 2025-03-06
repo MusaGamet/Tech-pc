@@ -1,23 +1,31 @@
 <?php 
+
 class LoginContr extends Login {
-    private $Username; 
-    private $Password; 
 
-    public function __construct($Username, $Password) {
-        $this->Username = $Username;
-        $this->Password = $Password;
-    }
+  private $username;
+  private $pwd;
 
-    private function checkEmptyInput() {
-        return !(empty($this->Username) || empty($this->Password));
-    }
+  public function __construct($username, $pwd)
+  {
+    $this->username = $username;
+    $this->pwd = $pwd;
+  }
 
-    public function loginUser() {
-    if (!$this->checkEmptyInput()) {
-        header("location: ../login.php?error=empty_input");
-        exit();
+  private function checkEmptyInput() {
+    if (empty($this->username) || empty($this->pwd)) {
+      $result = false;
     }
+    else{
+      $result = true;
+    }
+    return $result;
+  }
 
-    $this->getUser($this->Username, $this->Password);
+  public function LoginUser() {
+    if($this->checkEmptyInput($this->username, $this->pwd) == false) {
+      header("location: ../login.php?error=empty_input");
+      exit();
     }
+    $this->getUser($this->username, $this->pwd); 
+  }
 }

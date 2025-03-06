@@ -24,7 +24,7 @@
                 <i class="material-icons white-text">supervisor_account</i>
                 <div id="signup">
                   <?php 
-                    $sql = "SELECT * FROM members";
+                    $sql = "SELECT * FROM Members";
                     $conn = new Dbhandler();
                     $result = $conn->conn()->query($sql) or die($conn->conn()->error);
                     $signUpCount = $result->num_rows;
@@ -50,7 +50,7 @@
               <div class="grid">
                 <i class="material-icons white-text">category</i>
                 <?php 
-                  $sql = "SELECT * FROM items";
+                  $sql = "SELECT * FROM Items";
                   $conn = new Dbhandler();
                   $result = $conn->conn()->query($sql) or die($conn->conn()->error);
                   $productCount = $result->num_rows;
@@ -76,7 +76,7 @@
                 <i class="material-icons white-text">shopping_cart</i>
                 <div id="order">
                   <?php 
-                    $sql = "SELECT M.*, O.*, P.* FROM members M, orders O, payment P
+                    $sql = "SELECT M.*, O.*, P.* FROM Members M, Orders O, Payment P
                     WHERE M.PrivilegeLevel = 0 AND P.OrderID = O.OrderID  AND M.MemberID = O.MemberID ORDER BY P.PaymentDate DESC";
                     $conn = new Dbhandler();
                     $result = $conn->conn()->query($sql) or die($conn->conn()->error);
@@ -103,7 +103,7 @@
               <div class="grid">
                 <div id="order1">
                   <?php 
-                    $sql = "SELECT M.*, O.*, P.* FROM members M, orders O, payment P
+                    $sql = "SELECT M.*, O.*, P.* FROM Members M, Orders O, Payment P
                       WHERE M.PrivilegeLevel = 0 AND P.OrderID = O.OrderID  AND M.MemberID = O.MemberID 
                       AND P.PaymentDate = CURDATE() ORDER BY P.PaymentDate DESC";
 

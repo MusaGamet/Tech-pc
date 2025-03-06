@@ -6,13 +6,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>OG Tech PC - Landing Page</title>
   <?php 
-    error_reporting(0); // Отключаем вывод ошибок
-    ini_set('display_errors', 0); // Отключаем вывод ошибок на экран
     require "header.php"; 
-    require_once 'classes/InitDB.class.php';
-    
-    $initDB = new InitDB();
-    $initDB->initDbExec();
+    require_once "includes/class_autoloader.php";
+
+    // database initialization
+    $dbinit = new InitDB();
+    $dbinit->initDbExec();
   ?>
 </head>
 <body>

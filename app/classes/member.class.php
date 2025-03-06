@@ -23,7 +23,7 @@ class Member extends Dbhandler{
   }
 
   public static function CreateMemberFromID($memberID) {
-    $sql = "SELECT * FROM members WHERE MemberID = $memberID";
+    $sql = "SELECT * FROM Members WHERE MemberID = $memberID";
     $conn = new Dbhandler();
     $result = $conn->conn()->query($sql) or die($conn->conn()->error);
     $row = $result->fetch_assoc();
@@ -35,14 +35,14 @@ class Member extends Dbhandler{
   }
 
   public function updateCart() {
-    $sql = "SELECT OrderID FROM orders WHERE MemberID = $this->memberID AND CartFlag = 1";
+    $sql = "SELECT OrderID FROM Orders WHERE MemberID = $this->memberID AND CartFlag = 1";
     $result = $this->conn()->query($sql);
     $row = $result->fetch_assoc();
     $this->cart = new OrderContr($row["OrderID"]);
   }
 
   public function updatePreviousOrder() {
-    $sql = "SELECT OrderID FROM orders WHERE MemberID = $this->memberID AND CartFlag = 0";
+    $sql = "SELECT OrderID FROM Orders WHERE MemberID = $this->memberID AND CartFlag = 0";
     $result = $this->conn()->query($sql);
 
     $this->orders = array();
