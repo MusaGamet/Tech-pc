@@ -16,7 +16,7 @@ function generateOrderDetails($item, $cartItem){
   $categoryName = Item::CATEGORY[$categoryIdx];
   $dbh = new Dbhandler();
 
-  $sql = "SELECT I.Image from items I WHERE I.ItemID = $itemID";
+  $sql = "SELECT I.Image from Items I WHERE I.ItemID = $itemID";
   $result = $dbh->conn()->query($sql) or die($dbh->conn()->error);
   $row = $result->fetch_assoc();
   $image = $row["Image"];

@@ -13,9 +13,9 @@ class Dbhandler {
 
   private function connect() {
     // default XAMPP credentials 
-    $this->host = "db";
-    $this->user = "myuser";
-    $this->pass = "mypassword";
+    $this->host = "127.0.0.1";
+    $this->user = "root";
+    $this->pass = "";
     $this->db = "ogtech";
 
     // connect to db
@@ -29,7 +29,7 @@ class Dbhandler {
 
   public function conn() {
     // connect to db
-    $this->conn = new mysqli("db", "myuser", "mypassword", "ogtech");
+    $this->conn = new mysqli("127.0.0.1", "root", "", "ogtech");
     return $this->conn;
 
     /* check connection */

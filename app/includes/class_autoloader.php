@@ -11,5 +11,5 @@
     }
     
     $extension = ".class.php";
-    require_once $path. $className. $extension;
+    require_once $path . $className . $extension;
   } 

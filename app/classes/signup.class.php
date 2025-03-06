@@ -2,7 +2,7 @@
 
 class Signup extends Dbhandler {
   protected function setUser($username, $pwd, $email, $privilegeLevel=0, $attempt=3) {
-    $sql = "INSERT INTO members (Username, Password, Email, PrivilegeLevel, Attempt, RegisteredDate)
+    $sql = "INSERT INTO Members (Username, Password, Email, PrivilegeLevel, Attempt, RegisteredDate)
       VALUES (?, ?, ?, ?, ?, ?);";
     $stmt = $this->conn()->prepare($sql);
 
@@ -14,21 +14,21 @@ class Signup extends Dbhandler {
     }
 
     // get member id
-    $sql = "SELECT MemberID FROM members where Username = '$username';";
+    $sql = "SELECT MemberID FROM Members where Username = '$username';";
     $result = $this->conn()->query($sql) or die("<p>*MemberID error, please try again!</p>");
 
     $row = $result->fetch_assoc();
     $memberID = $row["MemberID"];
 
     // create cart
-    $sql = "INSERT INTO orders(MemberID) VALUES ($memberID);";
+    $sql = "INSERT INTO Orders(MemberID) VALUES ($memberID);";
     $this->conn()->query($sql) or die("<p>*Cart creation error, please try again!</p>");
     
     $stmt->close();
   }
 
   protected function checkUser($username, $email) {
-    $sql = "SELECT Username FROM members WHERE Username = ? 
+    $sql = "SELECT Username FROM Members WHERE Username = ? 
       OR Email = ?;";
     $stmt = $this->conn()->stmt_init();
 

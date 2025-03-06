@@ -18,7 +18,7 @@ class Login extends CommonUtil{
       header("location: ../login.php?error=WrongLogin");
       $loginAttempt = $loginAttempt - 1;
       $username = $row["Username"];
-      $updateAttempt = "UPDATE members SET Attempt = $loginAttempt WHERE Username = '$username'";
+      $updateAttempt = "UPDATE Members SET Attempt = $loginAttempt WHERE Username = '$username'";
       $this->conn()->query($updateAttempt) or die("<p>*Unknown Error!</p>");
       $this->conn()->close();
       
@@ -30,7 +30,7 @@ class Login extends CommonUtil{
         
         if (time() >= $time) {
           // resets login attempt
-          $updateAttempt = "UPDATE members SET Attempt = 3 WHERE Username = '$username'";
+          $updateAttempt = "UPDATE Members SET Attempt = 3 WHERE Username = '$username'";
           $this->conn()->query($updateAttempt) or die("<p>*Unknown Error!</p>");
           $this->conn()->close();
         }

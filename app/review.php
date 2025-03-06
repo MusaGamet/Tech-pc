@@ -16,7 +16,7 @@
 
     if (isset($orderItemID))
     {
-      $sql = "SELECT I.Image, I.Name from items I, orderitems O, items WHERE O.OrderItemID = $orderItemID AND I.ItemID = O.ItemID";
+      $sql = "SELECT I.Image, I.Name from Items I, OrderItems O, Items WHERE O.OrderItemID = $orderItemID AND I.ItemID = O.ItemID";
       $result = $conn->conn()->query($sql) or die($conn->conn()->error);
       $row = $result->fetch_assoc();
       $image = $row["Image"];

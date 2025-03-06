@@ -5,7 +5,7 @@
 class Admin extends Dbhandler{
 
   protected function adminReviews(){
-    $sql = "SELECT OI.ItemID, OI.RatingDateTime, I.Image FROM orderitems OI, items I
+    $sql = "SELECT OI.ItemID, OI.RatingDateTime, I.Image FROM OrderItems OI, Items I
       WHERE OI.ItemID = I.ItemID AND Rating IS NOT NULL ORDER BY OrderItemID DESC;";
 
     $conn = new Dbhandler();
@@ -45,7 +45,7 @@ class Admin extends Dbhandler{
       else
       {
         // limited search to prevent page overflow
-        $sql = "SELECT Username, MemberID FROM members WHERE Username LIKE '%$searchMember%' ORDER BY Username LIMIT 20";
+        $sql = "SELECT Username, MemberID FROM Members WHERE Username LIKE '%$searchMember%' ORDER BY Username LIMIT 20";
         $result = $this->conn()->query($sql) or die ("User does not exists!");
         while ($row = $result->fetch_assoc() ) 
         { 
@@ -68,7 +68,7 @@ class Admin extends Dbhandler{
 
     if (!isset($searchMember) || $util->EmptyInputSelect($searchMember))
     {
-      $sql = "SELECT Username, MemberID FROM members ORDER BY MemberID DESC";
+      $sql = "SELECT Username, MemberID FROM Members ORDER BY MemberID DESC";
       $result = $this->conn()->query($sql) or die ($this->conn()->error);
       while ($row = mysqli_fetch_assoc($result) ) 
       { 
@@ -92,7 +92,7 @@ class Admin extends Dbhandler{
   protected function inspectUser(){
     // inspect user
     $uid = $_GET["inspect"];
-    $sql = "SELECT MemberID, Username, Email, PrivilegeLevel FROM members WHERE Username = '$uid' ORDER BY Username";
+    $sql = "SELECT MemberID, Username, Email, PrivilegeLevel FROM Members WHERE Username = '$uid' ORDER BY Username";
     $result = $this->conn()->query($sql) or die ("Select statement FAILED!");
     while ($row = $result->fetch_array())
     {
@@ -123,7 +123,7 @@ class Admin extends Dbhandler{
       else
       {
         // limited search to prevent page overflow
-        $sql = "SELECT ItemID, Name, Brand, QuantityInStock FROM items
+        $sql = "SELECT ItemID, Name, Brand, QuantityInStock FROM Items
           WHERE Brand LIKE '%$searchProduct%' OR Name LIKE '%$searchProduct%' LIMIT 20";
 
         $result = $this->conn()->query($sql) or die ("Product does not exists!");
@@ -161,7 +161,7 @@ class Admin extends Dbhandler{
 
     if (!isset($searchProduct) || $emptyInput->EmptyInputSelect($searchProduct))
     {
-      $sql = "SELECT ItemID, Name, Brand, QuantityInStock FROM items ORDER BY QuantityInStock";
+      $sql = "SELECT ItemID, Name, Brand, QuantityInStock FROM Items ORDER BY QuantityInStock";
       $result = $this->conn()->query($sql) or die ($this->conn()->error);
       while ($row = $result->fetch_assoc()) 
       {
@@ -197,7 +197,7 @@ class Admin extends Dbhandler{
   protected function inspectProduct(){
     // inspect product
     $itemID = $_GET["inspect_product"];
-    $sql = "SELECT * FROM items where ItemID = '$itemID' ORDER BY Brand";
+    $sql = "SELECT * FROM Items where ItemID = '$itemID' ORDER BY Brand";
     $result = $this->conn()->query($sql) or die("<p> * ItemID error, please try again!</p>");
     while ($row = $result->fetch_assoc())    
     {
@@ -244,7 +244,7 @@ class Admin extends Dbhandler{
         echo "<p class='prompt-warning'>Please enter a value!<p>";
       else
       {
-        $sql = "SELECT M.*, O.*, P.* FROM members M, orders O, payment P
+        $sql = "SELECT M.*, O.*, P.* FROM Members M, Orders O, Payment P
           WHERE (M.Username LIKE '%$searchMember%' OR M.Email LIKE '%$searchMember%') 
           AND M.PrivilegeLevel = 0 AND P.OrderID = O.OrderID  AND M.MemberID = O.MemberID ORDER BY P.PaymentDate DESC";
 
@@ -282,7 +282,7 @@ class Admin extends Dbhandler{
       // if searchMember is not set or searchMember is empty
       // only non admin users payment is shown
 
-      $sql = "SELECT M.*, O.*, P.* FROM members M, orders O, payment P
+      $sql = "SELECT M.*, O.*, P.* FROM Members M, Orders O, Payment P
         WHERE M.PrivilegeLevel = 0 AND P.OrderID = O.OrderID  AND M.MemberID = O.MemberID ORDER BY P.PaymentDate DESC";
       $result = $dbh->conn()->query($sql) or die($dbh->conn()->error);
       while ($row = $result->fetch_assoc()) 

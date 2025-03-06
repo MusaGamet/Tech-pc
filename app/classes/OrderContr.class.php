@@ -12,7 +12,7 @@ class OrderContr extends Dbhandler {
 
   // update order items related to this order
   protected function updateOrderItems() {
-    $sql = "SELECT OrderItemID FROM orderitems WHERE ORDERID = '$this->orderID'";
+    $sql = "SELECT OrderItemID FROM OrderItems WHERE ORDERID = '$this->orderID'";
     $result = $this->conn()->query($sql) or die($this->conn()->error);
 
     // create multiple OrderItem instances

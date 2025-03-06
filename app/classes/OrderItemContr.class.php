@@ -14,7 +14,7 @@ class OrderItemContr extends Dbhandler{
   }
 
   protected function initData() {
-    $sql = "SELECT * FROM orderitems WHERE OrderItemID = $this->orderItemID";
+    $sql = "SELECT * FROM OrderItems WHERE OrderItemID = $this->orderItemID";
     $result = $this->conn()->query($sql) or die($this->conn()->error);
     $row = $result->fetch_assoc();
     $this->itemID = $row["ItemID"];
@@ -24,7 +24,7 @@ class OrderItemContr extends Dbhandler{
   }
 
   protected function deleteOrders() {
-    $sql = "DELETE * FROM orderitems WHERE OrderItemID = ?";
+    $sql = "DELETE * FROM OrderItems WHERE OrderItemID = ?";
     $stmt = $this->conn()->prepare($sql);
     $stmt->execute($this->orderItemID);
     

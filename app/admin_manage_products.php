@@ -94,7 +94,7 @@
     if (isset($_GET["delete_product"]))
     {
       $id = $_GET["delete_product"];
-      $sql =  "DELETE FROM items WHERE ItemID = $id";
+      $sql =  "DELETE FROM Items WHERE ItemID = $id";
       $dbh = new Dbhandler();
       $dbh->conn()->query($sql) or die ("<p class='red-text'>*Delete statement FAILED!</p>");
     }

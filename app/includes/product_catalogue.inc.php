@@ -13,7 +13,7 @@
     /** 
      * @var Item[] $items
      */
-    $sql = "SELECT ItemID FROM items WHERE (Name LIKE '%$searchName%')";
+    $sql = "SELECT ItemID FROM Items WHERE (Name LIKE '%$searchName%')";
 
     // only limit to a number
     if ($category != -1) $sql .= " AND Category = $category";

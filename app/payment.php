@@ -160,15 +160,15 @@
       $item->setQuantityInStock($quantityInStock - $quantity);
       $item->setData();
 
-      $sql = "INSERT INTO payment(OrderID, PaymentDate)
+      $sql = "INSERT INTO Payment(OrderID, PaymentDate)
         VALUES($orderid, CURRENT_TIME)";
       $conn->conn()->query($sql) or die($conn->error);
 
 
-      $sql = "UPDATE orders SET CartFlag = 0 WHERE OrderID = $orderid";
+      $sql = "UPDATE Orders SET CartFlag = 0 WHERE OrderID = $orderid";
       $conn->conn()->query($sql) or die($conn->error);
 
-      $sql = "INSERT INTO orders(MemberID, CartFlag)
+      $sql = "INSERT INTO Orders(MemberID, CartFlag)
         VALUES($memberID, 1)";
       $conn->conn()->query($sql) or die($conn->error);
       
